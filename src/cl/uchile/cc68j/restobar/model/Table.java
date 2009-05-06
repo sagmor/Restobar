@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Table extends Model {
+	static public String tableName = "TABLES";
 	private int spaces;
 	private String location;
 	
@@ -11,12 +12,13 @@ public class Table extends Model {
 		super(row);
 		
 		try {
-			newRecord = false;
 			id = row.getInt("id");
 			spaces = row.getInt("spaces");
 			location = row.getString("location");
 		} catch (SQLException ex) {}
 	}
+
+	public Table() {}
 
 	public int getSpaces() {
 		return spaces;
@@ -36,8 +38,9 @@ public class Table extends Model {
 
 	@Override
 	public boolean valid() {
-		// TODO Auto-generated method stub
-		return false;
+		if (spaces <= 0 || location == null) return false;
+		
+		return true;
 	}
 
 	@Override
@@ -48,8 +51,11 @@ public class Table extends Model {
 
 	@Override
 	protected String insertQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		String q = "INSERT INTO "+tableName+
+		"(SPACES, LOCATION) VALUES ("+spaces+", '"+location+"');";
+		System.out.println(q);
+		
+		return q;
 	}
 
 	@Override

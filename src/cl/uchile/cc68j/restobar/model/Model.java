@@ -1,13 +1,18 @@
 package cl.uchile.cc68j.restobar.model;
 
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 public abstract class Model {
 	protected int id;
-	protected boolean newRecord = true;
+	protected boolean newRecord;
 	
 	protected Model(ResultSet row) {
 		newRecord = false;
+	}
+	
+	public Model() {
+		newRecord = true;
 	}
 	
 	public int getId() {

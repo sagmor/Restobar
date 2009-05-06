@@ -19,9 +19,9 @@ public class DB {
 	 * 
 	 */
 	private DB() throws DBException {
-		url = "jdbc:oracle:oci:@XE";
-		user = "sys";
-		pass = "oracle";
+		url = "jdbc:oracle:thin:@localhost:1521:xe";
+		user = "restobar";
+		pass = "restobar";
 		driver = "oracle.jdbc.driver.OracleDriver";
 		
 		initConnection();
@@ -31,6 +31,7 @@ public class DB {
 		try{
 			/* carga el driver usando el metodoClass.forName() */
 			Class.forName(driver);
+			// DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
 			connection = DriverManager.getConnection(url, user, pass);
 		}
 		catch(ClassNotFoundException ex) {
@@ -80,5 +81,9 @@ public class DB {
 		}
 		
 		return instance;
+	}
+
+	public DatabaseMetaData getMetaData() throws SQLException {
+		return connection.getMetaData();
 	}	
 }
