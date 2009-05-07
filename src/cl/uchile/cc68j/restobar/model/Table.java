@@ -1,10 +1,14 @@
 package cl.uchile.cc68j.restobar.model;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Table extends Model {
 	static public String tableName = "TABLES";
+	static private String insertQuery = "INSERT INTO TABLES(SPACES, LOCATION) VALUES (?, ?)";
+	static private String updateQuery = "UPDATE TABLES SET (SPACES = ?, LOCATION = ?) WHERE ID = ?";
+	static private String deleteQuery = "DELETE FROM TABLES WHERE ID = ?";
+	static private String generatedColumns[] = {"ID"};
+
 	private int spaces;
 	private String location;
 	
@@ -44,23 +48,58 @@ public class Table extends Model {
 	}
 
 	@Override
-	protected String deleteQuery() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	protected String insertQuery() {
-		String q = "INSERT INTO "+tableName+
-		"(SPACES, LOCATION) VALUES ("+spaces+", '"+location+"');";
-		System.out.println(q);
+	protected boolean insert() {
+		try {
+			
+			Connection conn = DB.getConnection();
+			PreparedStatement st = conn.prepareStatement(insertQuery, generatedColumns);
 		
-		return q;
+			st.setInt(1, spaces);
+			st.setString(2, location);
+		
+			st.executeUpdate();
+		
+			ResultSet rs = st.getGeneratedKeys();
+			rs.next();
+			this.id = rs.getInt(1);
+		
+			return true;
+		} catch (SQLException ex) {
+			return false;
+		}
 	}
 
 	@Override
-	protected String updateQuery() {
-		// TODO Auto-generated method stub
-		return null;
+	protected boolean update() {
+		try {
+			Connection conn = DB.getConnection();
+			PreparedStatement st = conn.prepareStatement(updateQuery);
+		
+			st.setInt(1, spaces);
+			st.setString(2, location);
+			st.setInt(3, id);
+		
+			st.executeUpdate();
+		
+			return true;
+		} catch (SQLException ex) {
+			return false;
+		}
+	}
+	
+	@Override
+	public boolean delete() {
+		try {
+			Connection conn = DB.getConnection();
+			PreparedStatement st = conn.prepareStatement(deleteQuery);
+		
+			st.setInt(1, id);
+		
+			st.executeUpdate();
+		
+			return true;
+		} catch (SQLException ex) {
+			return false;
+		}
 	}
 }

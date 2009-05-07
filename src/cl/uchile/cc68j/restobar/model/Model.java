@@ -1,7 +1,6 @@
 package cl.uchile.cc68j.restobar.model;
 
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public abstract class Model {
 	protected int id;
@@ -34,29 +33,19 @@ public abstract class Model {
 	public boolean save() {
 		if (!valid()) return false;
 		
-		try {
-			DB db = DB.getInstance();
-			
-			if (newRecord)
-				db.update(insertQuery());
-			else
-				db.update(updateQuery());
-
-		} catch (DBException ex) {
-			return false;
-		}
-		return true;
-	}
-	
-	public void destroy() {
-		try {
-			DB db = DB.getInstance();
-			db.update(deleteQuery());
-		} catch (DBException ex) {}
+		if (newRecord) {
+			if (insert()) {
+				this.newRecord = false;
+				return true;
+			} else{
+				return false;
+			}
+		} else
+			return update();
 	}
 
 	public abstract boolean valid();
-	protected abstract String insertQuery();
-	protected abstract String updateQuery();
-	protected abstract String deleteQuery();
+	abstract protected boolean insert();
+	abstract protected boolean update();
+	abstract public boolean delete();
 }

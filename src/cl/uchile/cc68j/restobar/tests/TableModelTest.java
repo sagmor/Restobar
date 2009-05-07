@@ -1,12 +1,11 @@
 package cl.uchile.cc68j.restobar.tests;
 
-
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
 import cl.uchile.cc68j.restobar.model.Table;
-
 
 public class TableModelTest {
 	
@@ -18,5 +17,10 @@ public class TableModelTest {
 		
 		assertTrue(t.valid());
 		assertTrue(t.save());
+		
+		assertTrue(0<t.getId());
+		assertFalse(t.isNewRecord());
+		
+		assertTrue(t.delete());
 	}
 }

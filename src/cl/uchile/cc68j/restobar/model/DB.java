@@ -82,8 +82,16 @@ public class DB {
 		
 		return instance;
 	}
+	
+	public static Connection getConnection() throws DBException {
+		return getInstance().connection;
+	}
 
 	public DatabaseMetaData getMetaData() throws SQLException {
 		return connection.getMetaData();
+	}
+
+	public Connection connection() {
+		return connection;
 	}	
 }

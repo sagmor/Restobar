@@ -1,6 +1,8 @@
 package cl.uchile.cc68j.restobar.model;
 
-public class DBException extends Exception {
+import java.sql.SQLException;
+
+public class DBException extends SQLException {
 	public DBException(String message) {
 		super(message);
 	}
