@@ -16,6 +16,9 @@
  		<h:inputText id="tableLocation" value="#{ TableBean.table.location }">
  		</h:inputText>
 	</h:panelGrid>
+	 <h:commandButton value="Guardar" 
+	 	action="#{ TableBean.validateTable }" 
+	 	actionListener="#{ TableBean.saveTable }" />
 </h:form>
 </app:content>
 </f:view>

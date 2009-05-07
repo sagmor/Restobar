@@ -16,7 +16,7 @@
   <managed-bean>
   	<managed-bean-name>TableBean</managed-bean-name>
   	<managed-bean-class>cl.uchile.cc68j.restobar.beans.TableBean</managed-bean-class>
-  	<managed-bean-scope>request</managed-bean-scope>
+  	<managed-bean-scope>session</managed-bean-scope>
   </managed-bean>
   <managed-bean>
   	<managed-bean-name>TableListBean</managed-bean-name>
@@ -28,6 +28,21 @@
   	<navigation-case>
   		<from-outcome>editTable</from-outcome>
   		<to-view-id>/tables/edit.jsp</to-view-id>
+  	</navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+  	<from-view-id>/tables/edit.jsp</from-view-id>
+  	<navigation-case>
+  		<from-outcome>valid</from-outcome>
+  		<to-view-id>/tables/show.jsp</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>invalid</from-outcome>
+  		<to-view-id>/tables/edit.jsp</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>valid</from-outcome>
+  		<to-view-id>/tables/index.jsp</to-view-id>
   	</navigation-case>
   </navigation-rule>
   </faces-config>

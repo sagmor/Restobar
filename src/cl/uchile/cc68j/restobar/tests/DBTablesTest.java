@@ -33,7 +33,7 @@ public class DBTablesTest {
 		assertTrue(checkTable(Table.tableName));
 	}
 	
-	@Ignore
+	@Test
 	public void usersTableExist() {
 		assertTrue(checkTable(User.tableName));
 	}

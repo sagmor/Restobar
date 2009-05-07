@@ -2,6 +2,7 @@ package cl.uchile.cc68j.restobar.beans;
 
 import java.util.Vector;
 
+import javax.faces.component.UIInput;
 import javax.faces.component.UIParameter;
 import javax.faces.event.ActionEvent;
 
@@ -29,10 +30,24 @@ public class TableBean {
 	}
 	
 	public void loadTable(ActionEvent event) {
+		System.out.println("load Table");
 		UIParameter component = (UIParameter) event.getComponent().findComponent("tableId");
 		long id = Long.parseLong(component.getValue().toString());
 		
 		this.table = Table.find(id);
+	}
+	
+	public void saveTable(ActionEvent event) {				
+		System.out.println("save event");
+		UIInput component = (UIInput) event.getComponent().findComponent("tableId");
+		System.out.println(component.getValue());
+	}
+	
+	public String validateTable() {
+		if (table.valid())
+			return "valid";
+		else
+			return "invalid";
 	}
 	
 	public Table getTable() {

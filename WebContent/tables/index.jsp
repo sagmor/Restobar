@@ -26,11 +26,11 @@
 		<f:facet name="header">
  			<h:outputText value="Editar"/>
  		</f:facet>
- 		<h:commandLink id="Edit" action="editTable" actionListener="#{TableBean.loadTable}">
+ 		<h:commandLink id="edit" action="editTable" actionListener="#{TableBean.loadTable}">
 			<h:outputText value="Editar" />
 			<f:param id="tableId" name="id" value="#{table.id}" />
 		</h:commandLink>
-	</h:column>	  		
+	</h:column>
 </h:dataTable>
 </h:form>
 </app:content>
