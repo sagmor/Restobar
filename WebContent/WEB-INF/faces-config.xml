@@ -13,4 +13,21 @@
     </locale-config>
   </application>
 
-</faces-config>
+  <managed-bean>
+  	<managed-bean-name>TableBean</managed-bean-name>
+  	<managed-bean-class>cl.uchile.cc68j.restobar.beans.TableBean</managed-bean-class>
+  	<managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+  	<managed-bean-name>TableListBean</managed-bean-name>
+  	<managed-bean-class>cl.uchile.cc68j.restobar.beans.TableListBean</managed-bean-class>
+  	<managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <navigation-rule>
+  	<from-view-id>/tables/index.jsp</from-view-id>
+  	<navigation-case>
+  		<from-outcome>editTable</from-outcome>
+  		<to-view-id>/tables/edit.jsp</to-view-id>
+  	</navigation-case>
+  </navigation-rule>
+  </faces-config>

@@ -119,4 +119,21 @@ public class Table extends Model {
 		
 		return result;
 	}
+
+	public static Table find(long id) {
+		try {
+			PreparedStatement st = DB.getConnection().prepareStatement(
+					"SELECT * FROM TABLES WHERE ID = ?");
+			
+			st.setLong(1, id);
+			
+			ResultSet rs = st.executeQuery();
+			
+			if (rs.next()) {
+				return new Table(rs);
+			}
+		} catch (SQLException ex) {}
+		
+		return null;
+	}
 }
