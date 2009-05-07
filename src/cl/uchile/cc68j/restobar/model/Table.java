@@ -1,6 +1,7 @@
 package cl.uchile.cc68j.restobar.model;
 
 import java.sql.*;
+import java.util.Vector;
 
 public class Table extends Model {
 	static public String tableName = "TABLES";
@@ -101,5 +102,21 @@ public class Table extends Model {
 		} catch (SQLException ex) {
 			return false;
 		}
+	}
+	
+	static public Vector<Table> findAll() {
+		Vector<Table> result = new Vector<Table>();
+		
+		try {
+			Statement st = DB.getConnection().createStatement();
+			
+			ResultSet rs = st.executeQuery("SELECT * FROM TABLES");
+			
+			while (rs.next()) {
+				result.add(new Table(rs));
+			}
+		} catch (SQLException ex) {}
+		
+		return result;
 	}
 }
