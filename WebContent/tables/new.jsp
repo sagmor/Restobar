@@ -7,12 +7,10 @@
 	<jsp:param name="title" value="Indice"/>
 </jsp:include>
 <h:form id="table">
-	<h:inputHidden id="id" value="#{ TableBean.table.id }"/>
 	<h:panelGrid columns="2">
 		<h:outputText value="Asientos:" />
  		<h:inputText id="spaces" 
  			value="#{ TableBean.table.spaces }" >
- 		
  		</h:inputText>
  		
  		<h:outputText value="Ubicación:" />
@@ -20,7 +18,7 @@
  		
  		</h:inputText>
 	</h:panelGrid>
-	 <h:commandButton value="Guardar" 
+	<h:commandButton value="Guardar" 
 	 	actionListener="#{ TableBean.saveTable }" 
 	 	action="#{ TableBean.validateTable }" />
 	<h:commandLink id="back" action="listTables">

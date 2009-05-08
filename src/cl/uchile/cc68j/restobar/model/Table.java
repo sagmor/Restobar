@@ -6,7 +6,7 @@ import java.util.Vector;
 public class Table extends Model {
 	static public String tableName = "TABLES";
 	static private String insertQuery = "INSERT INTO TABLES(SPACES, LOCATION) VALUES (?, ?)";
-	static private String updateQuery = "UPDATE TABLES SET (SPACES = ?, LOCATION = ?) WHERE ID = ?";
+	static private String updateQuery = "UPDATE TABLES SET SPACES = ?, LOCATION = ? WHERE ID = ?";
 	static private String deleteQuery = "DELETE FROM TABLES WHERE ID = ?";
 	static private String generatedColumns[] = {"ID"};
 
@@ -79,11 +79,14 @@ public class Table extends Model {
 			st.setInt(1, spaces);
 			st.setString(2, location);
 			st.setInt(3, id);
+			
+			System.out.println(st.toString());
 		
 			st.executeUpdate();
 		
 			return true;
 		} catch (SQLException ex) {
+			ex.printStackTrace();
 			return false;
 		}
 	}
@@ -100,6 +103,7 @@ public class Table extends Model {
 		
 			return true;
 		} catch (SQLException ex) {
+			ex.printStackTrace();
 			return false;
 		}
 	}

@@ -1,9 +1,9 @@
 package cl.uchile.cc68j.restobar.beans;
 
+import java.util.Map;
 import java.util.Vector;
 
-import javax.faces.component.UIInput;
-import javax.faces.component.UIParameter;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import cl.uchile.cc68j.restobar.model.Table;
@@ -30,17 +30,37 @@ public class TableBean {
 	}
 	
 	public void loadTable(ActionEvent event) {
-		System.out.println("load Table");
-		UIParameter component = (UIParameter) event.getComponent().findComponent("tableId");
-		long id = Long.parseLong(component.getValue().toString());
+		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		
-		this.table = Table.find(id);
+		this.table = Table.find(Long.parseLong(params.get("tableId")));
 	}
 	
-	public void saveTable(ActionEvent event) {				
-		System.out.println("save event");
-		UIInput component = (UIInput) event.getComponent().findComponent("tableId");
-		System.out.println(component.getValue());
+	public void newTable(ActionEvent event) {	
+		this.table = new Table();
+	}
+	
+	public void saveTable(ActionEvent event) {	
+		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+
+		if (params.get("table:id") != null) {
+			this.table = Table.find(Long.parseLong(params.get("table:id")));
+		} else {
+			this.table = new Table();
+		}
+		
+		this.table.setLocation(params.get("table:location"));
+	
+		this.table.setSpaces(Integer.parseInt(params.get("table:spaces")));
+		
+		this.table.save();
+	}
+	
+	public void deleteTable(ActionEvent event) {	
+		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+
+		this.table = Table.find(Long.parseLong(params.get("table:id")));
+		this.table.delete();
+		this.table = null;
 	}
 	
 	public String validateTable() {

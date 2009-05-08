@@ -4,14 +4,14 @@
 
 <head profile="http://gmpg.org/xfn/11">
 	<title>${ title }</title>
-	<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/Restobar/style.css" type="text/css" media="screen" />
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 </head>
 
 <body>
 	<div id="header">
 		<h1>Restobar</h1>
-		<p>Aquí irá algun tagline</p>
+		<p>Aquí irá algún tagline</p>
 		<ul>
 			<li><a href="">Inicio</a></li>
 			<li><a href="">Usuarios</a></li>
@@ -21,12 +21,3 @@
 	</div>
 	<div id="content">
 		<div id="main">
-		  <!-- Content -->
-		  ${ content }
-		</div>
-	</div>
-	<div id="footer">
-		<p>Copyright &copy; <a href="#">Spring Bloom</a> 2007 | Designed by <a href="http://www.edg3.co.uk/">edg3.co.uk</a> | Sponsored by <a href="http://www.opendesigns.org/">Open Designs</a> | Valid <a href="http://jigsaw.w3.org/css-validator/">CSS</a> &amp; <a href="http://validator.w3.org/">XHTML</a></p>
-	</div>
-</body>
-</html>

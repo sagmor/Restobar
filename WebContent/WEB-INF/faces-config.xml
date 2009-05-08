@@ -24,10 +24,26 @@
   	<managed-bean-scope>request</managed-bean-scope>
   </managed-bean>
   <navigation-rule>
-  	<from-view-id>/tables/index.jsp</from-view-id>
+  	<from-view-id>/tables/*</from-view-id>
+  	<navigation-case>
+  		<from-outcome>listTables</from-outcome>
+  		<to-view-id>/tables/index.jsp</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>newTable</from-outcome>
+  		<to-view-id>/tables/new.jsp</to-view-id>
+  	</navigation-case>
   	<navigation-case>
   		<from-outcome>editTable</from-outcome>
   		<to-view-id>/tables/edit.jsp</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>deleteTable</from-outcome>
+  		<to-view-id>/tables/delete.jsp</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>showTable</from-outcome>
+  		<to-view-id>/tables/show.jsp</to-view-id>
   	</navigation-case>
   </navigation-rule>
   <navigation-rule>
@@ -40,8 +56,26 @@
   		<from-outcome>invalid</from-outcome>
   		<to-view-id>/tables/edit.jsp</to-view-id>
   	</navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+  	<from-view-id>/tables/new.jsp</from-view-id>
   	<navigation-case>
   		<from-outcome>valid</from-outcome>
+  		<to-view-id>/tables/show.jsp</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>invalid</from-outcome>
+  		<to-view-id>/tables/new.jsp</to-view-id>
+  	</navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+  	<from-view-id>/tables/delete.jsp</from-view-id>
+  	<navigation-case>
+  		<from-outcome>delete</from-outcome>
+  		<to-view-id>/tables/index.jsp</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>return</from-outcome>
   		<to-view-id>/tables/index.jsp</to-view-id>
   	</navigation-case>
   </navigation-rule>

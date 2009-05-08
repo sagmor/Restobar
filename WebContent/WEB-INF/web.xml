@@ -35,10 +35,4 @@
     <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
     <param-value>resources.application</param-value>
   </context-param>
-  <jsp-config>
-  	<taglib>
-  		<taglib-uri>/tags/app</taglib-uri>
-  		<taglib-location>/WEB-INF/tlds/app.tld</taglib-location>
-  	</taglib>
-  </jsp-config>
   </web-app>
