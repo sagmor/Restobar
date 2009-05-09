@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head profile="http://gmpg.org/xfn/11">
-	<title>${ title }</title>
+	<title>${ param["title"] }</title>
 	<link rel="stylesheet" href="/Restobar/style.css" type="text/css" media="screen" />
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 </head>
@@ -13,10 +13,10 @@
 		<h1>Restobar</h1>
 		<p>Aquí irá algún tagline</p>
 		<ul>
-			<li><a href="">Inicio</a></li>
-			<li><a href="">Usuarios</a></li>
-			<li><a href="">Mesas</a></li>
-			<li><a href="">Menu</a></li>
+			<li><a href="/Restobar/">Inicio</a></li>
+			<li><a href="/Restobar/users/">Usuarios</a></li>
+			<li><a href="/Restobar/tables/">Mesas</a></li>
+			<li><a href="/Restobar/menu/">Menu</a></li>
 		</ul>	
 	</div>
 	<div id="content">

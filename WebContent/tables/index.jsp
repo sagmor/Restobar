@@ -14,6 +14,12 @@
 <h:dataTable id="tables" value="#{ TableListBean.tables }" var="table" border="1"> 
 	<h:column>
 		<f:facet name="header">
+ 			<h:outputText value="Nº"/>
+ 		</f:facet>
+ 		<h:outputText value="#{ table.id }" />
+	</h:column>
+	<h:column>
+		<f:facet name="header">
  			<h:outputText value="Asientos"/>
  		</f:facet>
  		<h:outputText value="#{ table.spaces }" />
@@ -23,6 +29,12 @@
  			<h:outputText value="Ubicación"/>
  		</f:facet>
  		<h:outputText value="#{ table.location }" />
+	</h:column>
+	<h:column>
+		<f:facet name="header">
+ 			<h:outputText value="Fumadores"/>
+ 		</f:facet>
+ 		<h:outputText value="#{ ((table.smoking)?'Si':'No') }" />
 	</h:column>
 	<h:column>
 		<f:facet name="header">

@@ -5,14 +5,15 @@ import java.util.Vector;
 
 public class Table extends Model {
 	static public String tableName = "TABLES";
-	static private String insertQuery = "INSERT INTO TABLES(SPACES, LOCATION) VALUES (?, ?)";
-	static private String updateQuery = "UPDATE TABLES SET SPACES = ?, LOCATION = ? WHERE ID = ?";
+	static private String insertQuery = "INSERT INTO TABLES(SPACES, LOCATION, SMOKING) VALUES (?, ?, ?)";
+	static private String updateQuery = "UPDATE TABLES SET SPACES = ?, LOCATION = ?, SMOKING = ? WHERE ID = ?";
 	static private String deleteQuery = "DELETE FROM TABLES WHERE ID = ?";
 	static private String generatedColumns[] = {"ID"};
 
 	private int spaces;
 	private String location;
-	
+	private boolean smoking;
+
 	private Table(ResultSet row) {
 		super(row);
 		
@@ -20,6 +21,7 @@ public class Table extends Model {
 			id = row.getInt("id");
 			spaces = row.getInt("spaces");
 			location = row.getString("location");
+			smoking = "Y".equals(row.getString("smoking"));
 		} catch (SQLException ex) {}
 	}
 
@@ -40,6 +42,14 @@ public class Table extends Model {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	
+	public boolean isSmoking() {
+		return smoking;
+	}
+
+	public void setSmoking(boolean smoking) {
+		this.smoking = smoking;
+	}
 
 	@Override
 	public boolean valid() {
@@ -57,6 +67,7 @@ public class Table extends Model {
 		
 			st.setInt(1, spaces);
 			st.setString(2, location);
+			st.setString(3, smoking ? "Y":"N");
 		
 			st.executeUpdate();
 		
@@ -78,7 +89,9 @@ public class Table extends Model {
 		
 			st.setInt(1, spaces);
 			st.setString(2, location);
-			st.setInt(3, id);
+			st.setString(3, smoking ? "Y":"N");
+			
+			st.setInt(4, id);
 			
 			System.out.println(st.toString());
 		
