@@ -14,7 +14,7 @@ public class Table extends Model {
 	private String location;
 	private boolean smoking;
 
-	private Table(ResultSet row) {
+	public Table(ResultSet row) {
 		super(row);
 		
 		try {
