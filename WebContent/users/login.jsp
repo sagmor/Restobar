@@ -11,12 +11,12 @@
 	<h:panelGrid columns="2">
 		<h:outputText value="Nombre de Usuario:" />
  		<h:inputText id="nombre_usuario" 
- 			value="#{ Userbean.user.nombre_usuario }" >
+ 			value="#{ UserBean.user.nombre_usuario }" >
  		</h:inputText>
  		
  		<h:outputText value="Password:" />
  		<h:inputSecret id="password" 
- 			value="#{ Userbean.user.password }" >
+ 			value="#{ UserBean.user.password }" >
  		</h:inputSecret>
  		
 	</h:panelGrid>

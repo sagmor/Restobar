@@ -6,26 +6,26 @@
 <jsp:include page="/layout/header.jsp">
 	<jsp:param name="title" value="Indice"/>
 </jsp:include>
-<h1>Usuario ${ Userbean.user.id }</h1>
+<h1>Usuario ${ UserBean.user.id }</h1>
 <dl>
 
 	<dt>Nombre de Usuario:</dt>
-	<dd>${ Userbean.user.nombre_usuario }</dd>
+	<dd>${ UserBean.user.nombre_usuario }</dd>
 	
 	<dt>Nombre:</dt>
-	<dd>${ Userbean.user.nombre }</dd>
+	<dd>${ UserBean.user.nombre }</dd>
 	
 	<dt>Fecha de Creación:</dt>
-	<dd>${ Userbean.user.fecha_creacion }</dd>
+	<dd>${ UserBean.user.fecha_creacion }</dd>
 	
 	<dt>Fecha de Expiración:</dt>
-	<dd>${ Userbean.user.fecha_expiracion }</dd>
+	<dd>${ UserBean.user.fecha_expiracion }</dd>
 	
 	<dt>Perfil:</dt>
-	<dd>${ Userbean.user.perfil }</dd>
+	<dd>${ UserBean.user.perfil }</dd>
 	
 	<dt>Password:</dt>
-	<dd>${ Userbean.user.password }</dd>
+	<dd>${ UserBean.user.password }</dd>
 	
 	
 </dl>
@@ -35,13 +35,13 @@
 <h:commandLink id="back" action="listUsers">
 	<h:outputText value="Volver" />
 </h:commandLink> |
-<h:commandLink id="edit" action="editUser" actionListener="#{Userbean.loadUser}">
+<h:commandLink id="edit" action="editUser" actionListener="#{UserBean.loadUser}">
 	<h:outputText value="Editar" />
-	<f:param id="editUserId" name="userId" value="#{Userbean.user.id}" />
+	<f:param id="editUserId" name="userId" value="#{UserBean.user.id}" />
 </h:commandLink> |
-<h:commandLink id="delete" action="deleteUser" actionListener="#{Userbean.loadUser}">
+<h:commandLink id="delete" action="deleteUser" actionListener="#{UserBean.loadUser}">
 	<h:outputText value="Eliminar" />
-	<f:param id="deleteUserId" name="userId" value="#{Userbean.user.id}" />
+	<f:param id="deleteUserId" name="userId" value="#{UserBean.user.id}" />
 </h:commandLink>
 </h:form>
 <jsp:include page="/layout/footer.jsp"/>

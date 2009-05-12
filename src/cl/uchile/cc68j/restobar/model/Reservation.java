@@ -6,10 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Vector;
 
 public class Reservation extends Model {
+	static private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+
 	static public String tableName = "RESERVATIONS";
 	static private String insertQuery = "INSERT INTO RESERVATIONS(TABLE_ID, NAME, AT, EXTRAS) VALUES (?, ?, ?, ?)";
 	static private String updateQuery = "UPDATE RESERVATIONS SET TABLE_ID = ?, NAME = ?, AT = ?, EXTRAS = ? WHERE ID = ?";
@@ -123,12 +127,19 @@ public class Reservation extends Model {
 		this.extras = extras;
 	}
 
-	public Timestamp getAt() {
-		return at;
+	public String getAt() {
+		if (at == null)
+			return "";
+		else
+			return dateFormat.format(at);
 	}
 
-	public void setAt(Timestamp at) {
-		this.at = at;
+	public void setAt(String at) {
+		try {
+			this.at = new Timestamp(dateFormat.parse(at).getTime());
+		} catch (ParseException e) {
+			this.at = null;
+		}
 	}
 
 	public int getTableId() {

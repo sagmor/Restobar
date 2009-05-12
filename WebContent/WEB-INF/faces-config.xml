@@ -23,8 +23,48 @@
   	<managed-bean-class>cl.uchile.cc68j.restobar.beans.TableListBean</managed-bean-class>
   	<managed-bean-scope>request</managed-bean-scope>
   </managed-bean>
+  <managed-bean>
+  	<managed-bean-name>UserBean</managed-bean-name>
+  	<managed-bean-class>cl.uchile.cc68j.restobar.beans.UserBean</managed-bean-class>
+  	<managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+  	<managed-bean-name>UserListBean</managed-bean-name>
+  	<managed-bean-class>cl.uchile.cc68j.restobar.beans.UserListBean</managed-bean-class>
+  	<managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+  	<managed-bean-name>ReservationBean</managed-bean-name>
+  	<managed-bean-class>cl.uchile.cc68j.restobar.beans.ReservationBean</managed-bean-class>
+  	<managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+  	<managed-bean-name>ReservationListBean</managed-bean-name>
+  	<managed-bean-class>cl.uchile.cc68j.restobar.beans.ReservationListBean</managed-bean-class>
+  	<managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
   <navigation-rule>
-  	<from-view-id>/tables/*</from-view-id>
+  	<from-view-id>*</from-view-id>
+  	<navigation-case>
+  		<from-outcome>listUsers</from-outcome>
+  		<to-view-id>/users/index.jsp</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>newUser</from-outcome>
+  		<to-view-id>/users/new.jsp</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>editUser</from-outcome>
+  		<to-view-id>/users/edit.jsp</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>deleteUser</from-outcome>
+  		<to-view-id>/users/delete.jsp</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>showUser</from-outcome>
+  		<to-view-id>/users/show.jsp</to-view-id>
+  	</navigation-case>
   	<navigation-case>
   		<from-outcome>listTables</from-outcome>
   		<to-view-id>/tables/index.jsp</to-view-id>
@@ -44,6 +84,22 @@
   	<navigation-case>
   		<from-outcome>showTable</from-outcome>
   		<to-view-id>/tables/show.jsp</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>listReservations</from-outcome>
+  		<to-view-id>/reservations/index.jsp</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>newReservation</from-outcome>
+  		<to-view-id>/reservations/new.jsp</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>deleteReservation</from-outcome>
+  		<to-view-id>/reservations/delete.jsp</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>showReservation</from-outcome>
+  		<to-view-id>/reservations/show.jsp</to-view-id>
   	</navigation-case>
   </navigation-rule>
   <navigation-rule>
@@ -80,29 +136,6 @@
   	</navigation-case>
   </navigation-rule>
   <navigation-rule>
-  	<from-view-id>/users/*</from-view-id>
-  	<navigation-case>
-  		<from-outcome>listUsers</from-outcome>
-  		<to-view-id>/users/index.jsp</to-view-id>
-  	</navigation-case>
-  	<navigation-case>
-  		<from-outcome>newUser</from-outcome>
-  		<to-view-id>/users/new.jsp</to-view-id>
-  	</navigation-case>
-  	<navigation-case>
-  		<from-outcome>editUser</from-outcome>
-  		<to-view-id>/users/edit.jsp</to-view-id>
-  	</navigation-case>
-  	<navigation-case>
-  		<from-outcome>deleteUser</from-outcome>
-  		<to-view-id>/users/delete.jsp</to-view-id>
-  	</navigation-case>
-  	<navigation-case>
-  		<from-outcome>showUser</from-outcome>
-  		<to-view-id>/users/show.jsp</to-view-id>
-  	</navigation-case>
-  </navigation-rule>
-  <navigation-rule>
   	<from-view-id>/users/edit.jsp</from-view-id>
   	<navigation-case>
   		<from-outcome>valid</from-outcome>
@@ -133,6 +166,31 @@
   	<navigation-case>
   		<from-outcome>return</from-outcome>
   		<to-view-id>/users/index.jsp</to-view-id>
+  	</navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+  	<from-view-id>/reservations/delete.jsp</from-view-id>
+  	<navigation-case>
+  		<from-outcome>delete</from-outcome>
+  		<to-view-id>/reservations/index.jsp</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>return</from-outcome>
+  		<to-view-id>/reservations/index.jsp</to-view-id>
+  	</navigation-case>
+  </navigation-rule>
+    <navigation-rule>
+  	<from-view-id>/reservations/new.jsp</from-view-id>
+  	<navigation-case>
+  		<from-outcome>next</from-outcome>
+  		<to-view-id>/reservations/table.jsp</to-view-id>
+  	</navigation-case>
+  </navigation-rule>
+    <navigation-rule>
+  	<from-view-id>/reservations/table.jsp</from-view-id>
+  	<navigation-case>
+  		<from-outcome>save</from-outcome>
+  		<to-view-id>/reservations/index.jsp</to-view-id>
   	</navigation-case>
   </navigation-rule>
   </faces-config>

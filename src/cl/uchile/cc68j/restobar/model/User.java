@@ -1,6 +1,7 @@
 package cl.uchile.cc68j.restobar.model;
 
 import java.sql.*;
+import java.util.Calendar;
 import java.util.Vector;
 
 public class User extends Model{
@@ -18,7 +19,9 @@ public class User extends Model{
 	private String perfil;
 	private String password;
 	
-	public User(){};
+	public User(){
+		fecha_creacion =  new Date(Calendar.getInstance().getTimeInMillis());
+	}
 	
 	public  User(ResultSet row){
 		

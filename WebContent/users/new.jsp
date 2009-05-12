@@ -10,38 +10,33 @@
 	<h:panelGrid columns="2">
 		<h:outputText value="Nombre de Usuario:" />
  		<h:inputText id="nombre_usuario" 
- 			value="#{ Userbean.user.nombre_usuario }" >
+ 			value="#{ UserBean.user.nombre_usuario }" >
  		</h:inputText>
  		
  		<h:outputText value="Nombre:" />
  		<h:inputText id="nombre" 
- 			value="#{ Userbean.user.nombre }" >
+ 			value="#{ UserBean.user.nombre }" >
  		</h:inputText>
  		
  		<h:outputText value="Password:" />
  		<h:inputSecret id="password" 
- 			value="#{ Userbean.user.password }" >
+ 			value="#{ UserBean.user.password }" >
  		</h:inputSecret>
- 		
- 		<h:outputText value="Fecha Creación:" />
- 		<h:inputText id="fecha_creacion" 
- 			value="#{ Userbean.user.fecha_creacion }" >
- 		</h:inputText>
  		
  		<h:outputText value="Fecha Expiración:" />
  		<h:inputText id="fecha_expiracion" 
- 			value="#{ Userbean.user.fecha_expiracion }" >
+ 			value="#{ UserBean.user.fecha_expiracion }" >
  		</h:inputText>
  		
  		<h:outputText value="Perfil:" />
  		<h:inputText id="perfil" 
- 			value="#{ Userbean.user.perfil }" >
+ 			value="#{ UserBean.user.perfil }" >
  		</h:inputText>
  		
 	</h:panelGrid>
 	<h:commandButton value="Guardar" 
-	 	actionListener="#{ Userbean.saveUser }" 
-	 	action="#{ Userbean.validateUser }" />
+	 	actionListener="#{ UserBean.saveUser }" 
+	 	action="#{ UserBean.validateUser }" />
 	<h:commandLink id="back" action="listUsers">
 		<h:outputText value="Volver" />
 	</h:commandLink>

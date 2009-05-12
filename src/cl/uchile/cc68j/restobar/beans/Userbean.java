@@ -10,28 +10,23 @@ import javax.faces.event.ActionEvent;
 import cl.uchile.cc68j.restobar.model.User;
 
 
-public class Userbean {
+public class UserBean {
 
 	User user;
 	
-	public Userbean(){
-		
-		
-	}
+	public UserBean(){}
 	
-	public Userbean(User u){
-		
+	public UserBean(User u){
 		this.user = u;
 	}
 	
-	public static Vector<Userbean> getAllUsers() {
-		
+	public static Vector<UserBean> getAllUsers() {
 		Vector<User> users = User.findAll();
-		Vector<Userbean> beans = new Vector<Userbean>();
+		Vector<UserBean> beans = new Vector<UserBean>();
 		
 		for (User u : users) {
 			
-			beans.add(new Userbean(u));
+			beans.add(new UserBean(u));
 		}
 		
 		return beans;
@@ -44,7 +39,6 @@ public class Userbean {
 	}
 	
 	public void newUser(ActionEvent event) {	
-		
 		this.user = new User();
 	}
 	
@@ -65,10 +59,11 @@ public void saveUser(ActionEvent event) {
 		this.user.setNombre((params.get("user.nombre")));
 		this.user.setNombre_usuario(((params.get("user.nombre"))));
 		
-		Date date1 = Date.valueOf((params.get("user.fecha_creacion")));
-		Date date2 = Date.valueOf((params.get("user.fecha_expiracion")));
+		Date date2 = null;
+		try {
+			date2 = Date.valueOf((params.get("user.fecha_expiracion")));
+		} catch (IllegalArgumentException ex) {}
 		
-		this.user.setFecha_creacion(date1);
 		this.user.setFecha_expiracion(date2);
 		this.user.setPerfil((params.get("user.perfil")));
 		this.user.setPassword((params.get("user.password")));

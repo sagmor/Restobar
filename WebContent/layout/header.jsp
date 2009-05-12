@@ -13,10 +13,10 @@
 		<h1>Restobar</h1>
 		<p>Aquí irá algún tagline</p>
 		<ul>
-			<li><a href="/Restobar/">Inicio</a></li>
 			<li><a href="/Restobar/users/">Usuarios</a></li>
 			<li><a href="/Restobar/tables/">Mesas</a></li>
 			<li><a href="/Restobar/menu/">Menu</a></li>
+			<li><a href="/Restobar/reservations/">Reservas</a></li>
 		</ul>	
 	</div>
 	<div id="content">

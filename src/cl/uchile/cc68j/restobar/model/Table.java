@@ -153,4 +153,9 @@ public class Table extends Model {
 		
 		return null;
 	}
+	
+	@Override
+	public String toString() {
+		return "Mesa: "+ id + " para " + spaces + (smoking ? " fumadores (":" no fumadores (") + location + ")" ;
+	}
 }
