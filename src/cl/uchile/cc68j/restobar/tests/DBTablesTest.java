@@ -34,7 +34,7 @@ public class DBTablesTest {
 	
 	@Test
 	public void usersTableExist() {
-		assertTrue(checkTable(User.tableName));
+		assertTrue(checkTable("USERS"));
 	}
 	
 	public boolean checkTable(String tableName) {
